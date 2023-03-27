@@ -78,8 +78,8 @@ public class Main {
             // imprime as informações do link
             System.out.println("Link acessado: " + shortUrl);
             System.out.println("Redirecionando para: " + originalUrl);
-            System.out.println("URL de longa duração: " + urlIsLongTerm);
-            System.out.println("");
+            //System.out.println("URL de longa duração: " + urlIsLongTerm);
+            // System.out.println("");
 
             // redireciona para a URL original
             routingContext.response().putHeader("Location", originalUrl).setStatusCode(302).end();
