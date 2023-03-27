@@ -4,12 +4,14 @@ import java.util.*;
 
 public class LinkShortener {
     private static final String CHARACTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    private static final int SHORT_URL_LENGTH = 7;
+    private static final int SHORT_URL_LENGTH = 10;
 
     private final int capacity;
 
     // lista que armazena as URLs originais, encurtadas e seus registros  de data/hora
     private LinkedList<LinkInfo> list;
+
+
 
     // mapa que mapeia as URLs originais para as URLs encurtadas
     private HashMap<String, String> urlMap;
@@ -22,7 +24,7 @@ public class LinkShortener {
         this.shortUrlMap = new HashMap<>();
     }
 
-    public String shortenUrl(String url) {
+    public String shortenUrl(String url, boolean isLongTerm) {
         // verifica se já existe uma URL encurtada para essa URL original
         String shortUrl = urlMap.get(url);
         if (shortUrl != null) {
@@ -33,7 +35,7 @@ public class LinkShortener {
         shortUrl = generateShortUrl();
 
         // cria um novo nó com a URL original, encurtada e seu registro data/hora
-        LinkInfo node = new LinkInfo(url, shortUrl, System.currentTimeMillis());
+        LinkInfo node = new LinkInfo(url, shortUrl, System.currentTimeMillis(), isLongTerm);
 
         list.addLast(node);
         urlMap.put(url, shortUrl);

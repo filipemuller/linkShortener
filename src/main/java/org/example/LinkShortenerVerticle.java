@@ -28,7 +28,7 @@ public class LinkShortenerVerticle extends AbstractVerticle {
         String url = jsonBody.getString("url");
         boolean longTerm = jsonBody.getBoolean("longTerm", false);
 
-        String shortUrl = linkShortener.shortenUrl(url);
+        String shortUrl = linkShortener.shortenUrl(url, longTerm);
 
         JsonObject jsonResponse = new JsonObject().put("key", shortUrl);
 

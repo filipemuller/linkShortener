@@ -6,12 +6,17 @@ class LinkInfo {
     private final String shortUrl;
     private final long timestamp;
 
-    public LinkInfo(String originalUrl, String shortUrl, long timestamp) {
+    private boolean isLongTerm;
+
+    public LinkInfo(String originalUrl, String shortUrl, long timestamp, boolean isLongTerm) {
         this.originalUrl = originalUrl;
         this.shortUrl = shortUrl;
         this.timestamp = timestamp;
+        this.isLongTerm = isLongTerm();
     }
-
+    public boolean isLongTerm() {
+        return isLongTerm;
+    }
     public String getOriginalUrl() {
         return originalUrl;
     }

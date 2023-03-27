@@ -15,6 +15,8 @@ import java.util.Map;
 public class Main {
 
     public static Map<String, String> urlMap = new HashMap<>();
+
+    public static Map<String, Boolean> urlLongTermMap = new HashMap<>();
     private static LinkShortener linkShortener = new LinkShortener(1000);
 
     public static void main(String[] args) {
@@ -44,13 +46,14 @@ public class Main {
 
         // extrai a URL e a flag de longa duração do objeto JSON
         String url = jsonBody.getString("url");
-        boolean longTerm = jsonBody.getBoolean("longTerm", false);
+        boolean longTerm = jsonBody.getBoolean("longTerm");
 
         // encurta a URL usando o LinkShortener
-        String shortUrl = linkShortener.shortenUrl(url);
+        String shortUrl = linkShortener.shortenUrl(url, longTerm);
 
         // adiciona a URL encurtada ao mapa
         urlMap.put(shortUrl, url);
+        urlLongTermMap.put(shortUrl, longTerm);
 
         // cria um objeto JSON com a chave do link encurtado
         JsonObject jsonResponse = new JsonObject().put("key", shortUrl);
@@ -70,10 +73,13 @@ public class Main {
 
             // recupera a URL original do mapa
             String originalUrl = urlMap.get(shortUrl);
+            Boolean urlIsLongTerm = urlLongTermMap.get(shortUrl);
 
             // imprime as informações do link
             System.out.println("Link acessado: " + shortUrl);
             System.out.println("Redirecionando para: " + originalUrl);
+            System.out.println("URL de longa duração: " + urlIsLongTerm);
+            System.out.println("");
 
             // redireciona para a URL original
             routingContext.response().putHeader("Location", originalUrl).setStatusCode(302).end();
