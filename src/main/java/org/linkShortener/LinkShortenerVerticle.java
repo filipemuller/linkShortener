@@ -1,4 +1,4 @@
-package org.example;
+package org.linkShortener;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.http.HttpServer;

@@ -1,4 +1,4 @@
-package org.example;
+package org.linkShortener;
 
 // classe interna que encapsula a lógica de armazenamento de uma URL original, encurtada e seu resgitro de data/hora
 class LinkInfo {
