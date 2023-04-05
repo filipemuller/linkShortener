@@ -1,14 +1,11 @@
-package org.example;
+package org.linkShortener;
 
-import com.sun.net.httpserver.Headers;
-import com.sun.net.httpserver.HttpExchange;
 import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.handler.BodyHandler;
-import java.io.IOException;
-import java.io.OutputStream;
+
 import java.util.HashMap;
 import java.util.Map;
 

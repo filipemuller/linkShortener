@@ -5,4 +5,4 @@ This code will operate as a link shortener, where you have to inform the URL as 
 
 # How to use
 
-Clone the repo and build it using gradle oe running the main class.
+Clone the repo and build it using gradle or running the main class.
